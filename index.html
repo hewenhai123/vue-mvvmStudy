@@ -1,10 +1,129 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <title>ES6 入门导学</title>
-  </head>
-  <body>
-    <h1>h33</h1>
-  </body>
+</head>
+<body>
+<h1>h334</h1>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .box {
+        height: 100px;
+        border: 1px dashed #ccc;
+        width: 200px;
+        margin: 40px auto;
+    }
+
+    input {
+        width: 100%;
+    }
+
+</style>
+
+<div class="box box1">
+    <input type="text" id="input1">
+    <div class="content_box1" id="content_box1">
+
+    </div>
+</div>
+<div class="box box2">
+    <input type="text" id="input2">
+    <div class="content_box2" id="content_box2">
+
+    </div>
+</div>
+
+
+</body>
 </html>
+<script type="text/javascript">
+ var obj ={};
+var obj2={'data':0};
+ Object.defineProperty(obj,'data',{
+     get:function(){
+         console.log('获取数据')
+
+     },
+     set:function(val){
+         document.getElementById('content_box1').innerHTML=val;
+         console.log(this);
+         obj2['data']+=parseInt(val);
+     }
+
+ })
+ document.getElementById('input1').addEventListener('keyup',function(){
+
+ console.log("同步数据")
+     obj.data=this.value;
+ })
+
+
+
+
+
+
+
+
+//    var initObj = {
+//        "type_id": "2",
+//        "brand": "LUMANLSHA",
+//        "cart_id": "1670",
+//        "charge_unit": "\u0448\u0442.",
+//        "defaultImagePath": "https:\/\/images.qifa.ru\/images\/goods\/2018\/0719\/RC706_9193\/RC706_9193-2\/20180719171154_838.jpg_108x108.jpg",
+//        "goods_num": 21334,
+//        "is_select": 342,
+//        "name": "\u0416\u0435\u043d\u0441\u043a\u0430\u044f \u0421\u0443\u043c\u043a\u0430",
+//        "num_in_packing": "1",
+//        "online": "1",
+//        "original_price": 973,
+//        "price": 9743,
+//        "sales_type": 2,
+//        "sell_unit": "\u0448\u0442.",
+//        "sku": "RC706_9193-2",
+//        "stock": 546,
+//        "urls": "\/products\/RC706_9193-2",
+//        "volume": "0.0070",
+//        "weight": "0.6000",
+//        "moq": "1",
+//        "size_info": "M - \u0441\u0440\u0435\u0434\u043d\u0438\u0439",
+//        "goods_id": "25542",
+//        "moq_spu": "5"
+//    };
+
+//    var initCopyObj = {};
+//    for (var key in initObj) {
+////          Object.defineProperty(initObj,key,{
+////              value:initObj[key],
+////              enumerable:true,
+////              writable:true,
+////              configurable:true
+////          })
+//        Object.defineProperty(initObj,key,{
+//            get:function(val){
+//               console.log("获取数据",val)
+//            },
+//            set:function (val){
+//                console.log("获取数据",val)
+//            }
+//
+//        })
+//    }
+
+//    Object.defineProperty(initObj,'moq_spu',{
+//        get:function(val){
+//           console.log('获取数据')
+//            return val
+//        },
+//
+//    })
+
+
+
+
+
+</script>
