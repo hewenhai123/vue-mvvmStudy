@@ -42,25 +42,25 @@
 </body>
 </html>
 <script type="text/javascript">
- var obj ={};
-var obj2={'data':0};
- Object.defineProperty(obj,'data',{
-     get:function(){
-         console.log('获取数据')
-
-     },
-     set:function(val){
-         document.getElementById('content_box1').innerHTML=val;
-         console.log(this);
-         obj2['data']+=parseInt(val);
-     }
-
- })
- document.getElementById('input1').addEventListener('keyup',function(){
-
- console.log("同步数据")
-     obj.data=this.value;
- })
+// var obj ={};
+//var obj2={'data':0};
+// Object.defineProperty(obj,'data',{
+//     get:function(){
+//         console.log('获取数据')
+//
+//     },
+//     set:function(val){
+//         document.getElementById('content_box1').innerHTML=val;
+//         console.log(this);
+//         obj2['data']+=parseInt(val);
+//     }
+//
+// })
+// document.getElementById('input1').addEventListener('keyup',function(){
+//
+// console.log("同步数据")
+//     obj.data=this.value;
+// })
 
 
 
@@ -121,6 +121,71 @@ var obj2={'data':0};
 //        },
 //
 //    })
+
+
+
+//
+//    var obj={"a1":1,"a2":2}
+//
+//console.log(Object.keys(obj))
+
+
+var data={
+    name:'kindeng',
+    name2:'uiueu'
+};
+
+observer(data);
+
+/*
+ * observer 方法给所有的属性添加上getter/setter
+ * */
+
+function observer (data){
+
+    if(!data||typeof data !== 'object'){
+        return;
+    }
+
+    Object.keys(data).forEach(function (key) {
+        defineReactive(data,key,data[key])
+    })
+}
+//https://github.com/DMQ/mvvm
+function defineReactive(data,key,val) {
+    var dep=new Dep();
+    observer(val);
+    Object.defineProperty(data,key,{
+        enumerable:true,
+        configurable:false,
+        get:function () {
+            return val;
+        },
+        set:function (newVal) {
+            console.log("监听到变化",val,'-->',newVal);
+            val=newVal;
+            dep.notIfy()
+        }
+    })
+}
+
+function Dep(){
+    this.subs=[];
+
+}
+Dep.prototype={
+    addSb:function (sub){
+        this.subs.push(sub)
+    },
+    notIfy:function(){
+     this.subs.forEach(function (sub) {
+
+     })
+    }
+
+
+}
+
 
 
 
